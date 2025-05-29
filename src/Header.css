@@ -1,0 +1,33 @@
+.header {
+  display: flex; /* Activa Flexbox */
+  justify-content: space-between; /* Distribuye el espacio entre elementos */
+  align-items: center; /* Centra verticalmente */
+  padding: 1rem 1rem  ; /* Espaciado interno */
+  background-color: #005B89; /* Color de fondo */
+  color: white; /* Color del texto */
+}
+
+/* Estilo para el logo */
+.logo {
+  margin-right: auto; /* Empuja el logo a la izquierda */
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 1rem;
+}
+
+/* Estilo para la navegación */
+.nav {
+  margin: 0 auto; /* Centra el menú (opcional) */
+}
+
+/* Estilo para el botón */
+.cta-button {
+  margin: 1rem;
+  margin-left: auto; /* Empuja el botón a la derecha */
+}
+
+h1 {
+  width: 800px;
+  margin: 0 auto;
+}
