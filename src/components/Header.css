@@ -23,8 +23,19 @@
 
 /* Estilo para el botón */
 .cta-button {
-  margin: 1rem;
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   margin-left: auto; /* Empuja el botón a la derecha */
+}
+
+.cta-button:hover {
+  background-color: #ffffff8e;
 }
 
 h1 {
