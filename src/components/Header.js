@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AuthContext } from '../AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../assets/usm-logo.png';
@@ -7,6 +9,14 @@ import logo from '../assets/usm-logo.png';
 
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (user) logout();
+    navigate('/login');
+  };
+
   return (
     <header className="header">
       <Link to ="/">
@@ -22,9 +32,9 @@ const Header = () => {
     </div>
   </h1>
 
-  <Link to ="/login">
-      <button className="cta-button">Login</button>
-  </Link>
+    <button className="cta-button" onClick={handleClick}>
+      {user ? `Cambiar sesiòn` : `Iniciar Sesión`}
+    </button>
     </header>
   );
 };

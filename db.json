@@ -1,0 +1,33 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Pedro Riquelme Mora",
+      "email": "pedro.riquelmem@usm.cl",
+      "perfil": "profesor",
+      "password": "1234",
+      "sede": "San Joaquín",
+      "cursos": ["INF134", "INF155"]
+    },
+    {
+      "id": 2,
+      "nombre": "Claudia González Espinoza",
+      "email": "claudia.gonzalez@usm.cl",
+      "perfil": "coordinador",
+      "password": "1234",
+      "sede": "Casa Central",
+      "cursos": ["INF255", "INF221"]
+    }
+  ],
+  "cursos": [
+    { "codigo": "INF134", "nombre": "Estructuras de Datos", "paralelo": 200, "sede": "San Joaquín" },
+    { "codigo": "INF155", "nombre": "Bases de Datos", "paralelo": 200, "sede": "San Joaquín" },
+    { "codigo": "INF221", "nombre": "Algoritmos y Complejidad", "paralelo": 1, "sede": "Casa Central" },
+    { "codigo": "INF255", "nombre": "Redes de Computadores", "paralelo": 200, "sede": "San Joaquín"}
+  ],
+  "postulaciones": [
+    { "id": 1, "curso": "INF134", "nombre": "Jaime González", "carrera": "Ingeniería Civil Informática", "estado": "Pendiente", "fecha": "2025-02-10", "sede": "San Joaquín" },
+    { "id": 2, "curso": "INF155", "nombre": "Antonia Beltrán", "carrera": "Ingeniería Civil Informática", "estado": "Aceptado", "fecha": "2025-03-01", "sede": "San Joaquín" },
+    { "id": 3, "curso": "INF221", "nombre": "Benjamín Espinoza", "carrera": "Ingeniería Civil Informática", "estado": "Rechazado", "fecha": "2025-03-17", "sede": "Casa Central" }
+  ]
+}

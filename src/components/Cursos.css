@@ -1,0 +1,36 @@
+.cursos-container {
+  margin-top: 20px;
+}
+
+.cursos-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.curso-button {
+  padding: 10px 0;          /* poco padding horizontal porque el ancho será grande */
+  margin: 10px 20px;        /* margen lateral para separación del borde */
+  width: calc(100% - 40px); /* ancho total menos margen horizontal (20 + 20) */
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: block;           /* para que tome todo el ancho definido */
+  white-space: nowrap;      /* que el texto no salte de línea */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.curso-button:hover {
+  background-color: #005bb5;
+}
+
+
+
+.curso-button:hover {
+  background-color: #005bb5;
+}
