@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './PostulacionesCurso.css'; // asumiendo que guardas los estilos ahí
+import './PostulacionesCurso.css';
 
 const PostulacionesCurso = ({ curso }) => {
   const [postulaciones, setPostulaciones] = useState([]);
@@ -36,24 +36,30 @@ const PostulacionesCurso = ({ curso }) => {
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Pref.</th>
+              <th>Nota de presentacion</th>
               <th>Carrera</th>
-              <th>Estado</th>
               <th>Fecha</th>
               <th>Sede</th>
+              <th>Estado</th>
             </tr>
           </thead>
           <tbody>
-            {postulaciones.map(p => (
+            {postulaciones.sort((a, b) => parseInt(a.preferencia) - parseInt(b.preferencia))
+            .map(p => (
               <tr key={p.id}>
                 <td>{p.nombre}</td>
+                <td>{p.preferencia}</td>
+                <td>{p.nota}</td>
                 <td>{p.carrera}</td>
+                <td>{p.fechaPostulacion}</td>
+                <td>{p.sede}</td>
+
                 <td className ={
                   p.estado === 'Aceptado' ? 'estado-aceptado' :
                   p.estado === 'Pendiente' ? 'estado-pendiente' :
                   p.estado === 'Rechazado' ? 'estado-rechazado' : ''
                 }>{p.estado}</td>
-                <td>{p.fecha}</td>
-                <td>{p.sede}</td>
               </tr>
             ))}
           </tbody>

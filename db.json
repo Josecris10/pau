@@ -26,8 +26,20 @@
     { "codigo": "INF255", "nombre": "Redes de Computadores", "paralelo": 200, "sede": "San Joaquín"}
   ],
   "postulaciones": [
-    { "id": 1, "curso": "INF134", "nombre": "Jaime González", "carrera": "Ingeniería Civil Informática", "estado": "Pendiente", "fecha": "2025-02-10", "sede": "San Joaquín" },
-    { "id": 2, "curso": "INF155", "nombre": "Antonia Beltrán", "carrera": "Ingeniería Civil Informática", "estado": "Aceptado", "fecha": "2025-03-01", "sede": "San Joaquín" },
-    { "id": 3, "curso": "INF221", "nombre": "Benjamín Espinoza", "carrera": "Ingeniería Civil Informática", "estado": "Rechazado", "fecha": "2025-03-17", "sede": "Casa Central" }
+    {"id": "1","nombre": "María González","preferencia": "1","nota": "78","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-15"},
+    {"id": "2","nombre": "Juan Pérez","preferencia": "2","nota": "85","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-16"},
+    {"id": "3","nombre": "Ana Silva","preferencia": "1","nota": "92","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-17"},
+    {"id": "4","nombre": "Carlos Muñoz","preferencia": "3","nota": "67","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-18"},
+    {"id": "5","nombre": "Lucía Fernández","preferencia": "2","nota": "71","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-19"},
+    {"id": "6","nombre": "Pedro Sánchez","preferencia": "1","nota": "88","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-20"},
+    {"id": "7","nombre": "Daniela Rojas","preferencia": "4","nota": "63","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-21"},
+    {"id": "8","nombre": "Fernando López","preferencia": "1","nota": "95","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-22"},
+    {"id": "9","nombre": "Roberto Núñez","preferencia": "2","nota": "82","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-23"},
+    {"id": "10","nombre": "Camila Vargas","preferencia": "1","nota": "89","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-24"},
+    {"id": "11","nombre": "Jorge Medina","preferencia": "3","nota": "76","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-25"},
+    {"id": "12","nombre": "Valentina Castro","preferencia": "1","nota": "91","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-26"},
+    {"id": "13","nombre": "Diego Soto","preferencia": "2","nota": "69","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-27"},
+    {"id": "14","nombre": "Paula Herrera","preferencia": "1","nota": "84","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-28"},
+    {"id": "15","nombre": "Gabriel Torres","preferencia": "3","nota": "77","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-29"}
   ]
 }

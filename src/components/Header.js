@@ -33,7 +33,7 @@ const Header = () => {
   </h1>
 
     <button className="cta-button" onClick={handleClick}>
-      {user ? `Cambiar sesiòn` : `Iniciar Sesión`}
+      {user ? `Cerrar sesión` : `Iniciar Sesión`}
     </button>
     </header>
   );
