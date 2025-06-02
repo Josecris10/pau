@@ -1,12 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import './PostulacionesCurso.css';
 
-const PostulacionesCurso = ({ curso }) => {
+
+const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const [postulaciones, setPostulaciones] = useState([]);
   const [orden, setOrden] = useState({
     campo: null,
     direccion: 'asc'
   });
+  console.log("usuario en postulacionescurso", usuario);
+  console.log("curso en postulacionesCurso:", curso);
+  console.log("cursousuarios en postulacionescurso:", cursoUsuarios);
 
   // Función pura para ordenamiento
   const ordenarPostulaciones = (lista, campo, direccion) => {
@@ -43,28 +47,41 @@ const PostulacionesCurso = ({ curso }) => {
   const postulacionesOrdenadas = useMemo(() => {
     return ordenarPostulaciones(postulaciones, orden.campo, orden.direccion);
   }, [postulaciones, orden]);
-
+  
   const obtenerIconoOrden = (campo) => {
     if (orden.campo !== campo) return null;
     return orden.direccion === 'asc' ? '↑' : '↓';
   };
+  
+  const relacion = cursoUsuarios.find(
+    cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
+  );
+  const esCoordinador = relacion?.rol === 'coordinador';
+  const sedeUsuario = relacion?.sede;
+
 
   useEffect(() => {
     if (!curso) return;
-
+    
     const fetchData = async () => {
       try {
         const res = await fetch("http://localhost:3001/postulaciones");
         const data = await res.json();
-        const postulacionesCurso = data.filter(p => p.curso === curso.codigo);
+        let postulacionesCurso = data.filter(p => p.curso === curso.codigo);
+
+        if (!esCoordinador && sedeUsuario){
+          postulacionesCurso = postulacionesCurso.filter(p => p.sede === sedeUsuario);
+        }
         setPostulaciones(postulacionesCurso);
       } catch (error) {
         console.error("Error al cargar postulaciones:", error);
       }
     };
+    
+
 
     fetchData();
-  }, [curso]);
+  }, [curso, esCoordinador, sedeUsuario]);
 
   if (!curso) {
     return <p>Cargando curso...</p>;
