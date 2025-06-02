@@ -1,0 +1,112 @@
+/* Estilos generales del contenedor */
+.postulaciones-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.postulaciones-container h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+/* Tabla */
+.postulaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+/* Encabezado */
+.postulaciones-table thead tr {
+  background-color: #34495e;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  user-select: none;
+}
+
+.postulaciones-table thead th:hover {
+    background-color: #2c3e50;
+    cursor: pointer;
+}
+
+.postulaciones-table th, 
+.postulaciones-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Filas alternadas */
+.postulaciones-table tbody tr:nth-child(even) {
+  background-color: #ecf0f1;
+}
+
+/* Hover para filas */
+.postulaciones-table tbody tr:hover {
+  background-color: #d6eaf8;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Mensajes */
+.postulaciones-container p {
+  color: #7f8c8d;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.estado-aceptado {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.estado-pendiente {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.estado-rechazado {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.postulaciones-table input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.acciones-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.boton-confirmar {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.boton-confirmar:hover {
+  background-color: #0b7dda;
+}
+
+.boton-confirmar:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
