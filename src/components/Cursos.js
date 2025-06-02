@@ -2,22 +2,38 @@ import React, { useEffect, useState } from 'react';
 import './Cursos.css';
 
 const Cursos = ({ usuario, onSeleccionarCurso }) => {
-  const [cursosCompletos, setCursosCompletos] = useState([]);
+  const [cursosPorCodigo, setCursosPorCodigo] = useState([]);
 
   useEffect(() => {
     const fetchCursos = async () => {
       try {
         const codigos = usuario.cursos || [];
 
-        // Fetch por cada código de curso
-        const promesas = codigos.map(async (codigo) => {
-          const res = await fetch(`http://localhost:3001/cursos?codigo=${codigo}`);
-          const data = await res.json();
-          return data[0]; // asumimos que siempre hay uno
-        });
+        const agrupados = {};
 
-        const resultados = await Promise.all(promesas);
-        setCursosCompletos(resultados);
+        for (const codigo of codigos) {
+          const resRel = await fetch(
+            `http://localhost:3001/cursoUsuarios?codigo=${codigo}&usuarioId=${usuario.id}`
+          );
+          const relaciones = await resRel.json();
+          const perfilCurso = relaciones[0]?.perfil;
+
+          const resCursos = await fetch(
+            `http://localhost:3001/cursos?codigo=${codigo}`
+          );
+          const cursos = await resCursos.json();
+
+          if (cursos.length > 0) {
+            agrupados[codigo] = {
+              nombre: cursos[0].nombre,
+              codigo: codigo,
+              perfilCurso,
+            };
+          }
+        }
+
+        const cursosFinales = Object.values(agrupados);
+        setCursosPorCodigo(cursosFinales);
       } catch (error) {
         console.error('Error cargando cursos:', error);
       }
@@ -29,16 +45,32 @@ const Cursos = ({ usuario, onSeleccionarCurso }) => {
   return (
     <div className="cursos-container">
       <h3>Tus cursos</h3>
-      {cursosCompletos.length === 0 ? (
+      {cursosPorCodigo.length === 0 ? (
         <p>No tienes cursos asignados.</p>
       ) : (
         <ul className="cursos-lista">
-          {cursosCompletos.map((curso) => (
-            <li key={curso.codigo + curso.paralelo}>
-              <button className="curso-button" onClick={() => onSeleccionarCurso(curso)}>
-                <strong>{curso.nombre}</strong> ({curso.codigo})<br />
-                Paralelo {curso.paralelo}
+          {cursosPorCodigo.map((curso) => (
+            <li key={curso.codigo}>
+              <button className="curso-button">
+                {curso.nombre} ({curso.codigo})
               </button>
+              <div style={{ textAlign: 'center', marginTop: '6px' }}>
+                <button
+                  className="acceso-rol-button"
+                  onClick={() => onSeleccionarCurso({ codigo: curso.codigo, rol: 'profesor' })}
+                >
+                  Acceder como profesor
+                </button>
+                {curso.perfilCurso === 'coordinador' && (
+                  <button
+                    className="acceso-rol-button"
+                    style={{ marginLeft: '10px' }}
+                    onClick={() => onSeleccionarCurso({ codigo: curso.codigo, rol: 'coordinador' })}
+                  >
+                    Acceder como coordinador
+                  </button>
+                )}
+              </div>
             </li>
           ))}
         </ul>

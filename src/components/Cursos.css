@@ -25,12 +25,20 @@
   text-overflow: ellipsis;
 }
 
-.curso-button:hover {
-  background-color: #005bb5;
+
+
+.acceso-rol-button {
+  background-color: #ffffff;
+  color: #1e90ff;
+  border: 2px solid #1e90ff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-
-.curso-button:hover {
-  background-color: #005bb5;
+.acceso-rol-button:hover {
+  background-color: #1e90ff;
+  color: white;
 }
