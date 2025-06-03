@@ -6,7 +6,10 @@
       "email": "pedro.riquelmem@usm.cl",
       "password": "1234",
       "sede": "San Joaquín",
-      "cursos": ["INF134", "INF155"]
+      "cursos": [
+        "INF134",
+        "INF155"
+      ]
     },
     {
       "id": 2,
@@ -14,7 +17,10 @@
       "email": "claudia.gonzalez@usm.cl",
       "password": "1234",
       "sede": "Casa Central",
-      "cursos": ["INF255", "INF221"]
+      "cursos": [
+        "INF255",
+        "INF221"
+      ]
     }
   ],
   "cursoUsuarios": [
@@ -44,30 +50,563 @@
     }
   ],
   "cursos": [
-    { "codigo": "INF134", "nombre": "Estructuras de Datos", "paralelo": 200, "sede": "San Joaquín" },
-    { "codigo": "INF134", "nombre": "Estructuras de Datos", "paralelo": 1, "sede": "Casa Central"},
-    { "codigo": "INF155", "nombre": "Bases de Datos", "paralelo": 200, "sede": "San Joaquín" },
-    { "codigo": "INF155", "nombre": "Bases de Datos", "paralelo": 1, "sede": "Casa Central"},
-    { "codigo": "INF221", "nombre": "Algoritmos y Complejidad", "paralelo": 200, "sede": "San Joaquín"},
-    { "codigo": "INF221", "nombre": "Algoritmos y Complejidad", "paralelo": 1, "sede": "Casa Central" },
-    { "codigo": "INF255", "nombre": "Redes de Computadores", "paralelo": 200, "sede": "San Joaquín"},
-    { "codigo": "INF255", "nombre": "Redes de Computadores", "paralelo": 1, "sede": "Casa Central"}
+    {
+      "codigo": "INF134",
+      "nombre": "Estructuras de Datos",
+      "paralelo": 200,
+      "sede": "San Joaquín"
+    },
+    {
+      "codigo": "INF134",
+      "nombre": "Estructuras de Datos",
+      "paralelo": 1,
+      "sede": "Casa Central"
+    },
+    {
+      "codigo": "INF155",
+      "nombre": "Bases de Datos",
+      "paralelo": 200,
+      "sede": "San Joaquín"
+    },
+    {
+      "codigo": "INF155",
+      "nombre": "Bases de Datos",
+      "paralelo": 1,
+      "sede": "Casa Central"
+    },
+    {
+      "codigo": "INF221",
+      "nombre": "Algoritmos y Complejidad",
+      "paralelo": 200,
+      "sede": "San Joaquín"
+    },
+    {
+      "codigo": "INF221",
+      "nombre": "Algoritmos y Complejidad",
+      "paralelo": 1,
+      "sede": "Casa Central"
+    },
+    {
+      "codigo": "INF255",
+      "nombre": "Redes de Computadores",
+      "paralelo": 200,
+      "sede": "San Joaquín"
+    },
+    {
+      "codigo": "INF255",
+      "nombre": "Redes de Computadores",
+      "paralelo": 1,
+      "sede": "Casa Central"
+    }
   ],
   "postulaciones": [
-    {"id": "1","nombre": "María González","preferencia": "1","nota": "78","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-15"},
-    {"id": "2","nombre": "Juan Pérez","preferencia": "2","nota": "85","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-16"},
-    {"id": "3","nombre": "Ana Silva","preferencia": "1","nota": "92","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-17"},
-    {"id": "4","nombre": "Carlos Muñoz","preferencia": "3","nota": "67","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-18"},
-    {"id": "5","nombre": "Lucía Fernández","preferencia": "2","nota": "71","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-19"},
-    {"id": "6","nombre": "Pedro Sánchez","preferencia": "1","nota": "88","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-20"},
-    {"id": "7","nombre": "Daniela Rojas","preferencia": "4","nota": "63","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-21"},
-    {"id": "8","nombre": "Fernando López","preferencia": "1","nota": "95","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-22"},
-    {"id": "9","nombre": "Roberto Núñez","preferencia": "2","nota": "82","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-23"},
-    {"id": "10","nombre": "Camila Vargas","preferencia": "1","nota": "89","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-24"},
-    {"id": "11","nombre": "Jorge Medina","preferencia": "3","nota": "76","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-25"},
-    {"id": "12","nombre": "Valentina Castro","preferencia": "1","nota": "91","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF255","fechaPostulacion": "2023-05-26"},
-    {"id": "13","nombre": "Diego Soto","preferencia": "2","nota": "69","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF134","fechaPostulacion": "2023-05-27"},
-    {"id": "14","nombre": "Paula Herrera","preferencia": "1","nota": "84","carrera": "Ingeniería Civil Informática","sede": "San Joaquín","estado": "Pendiente","curso": "INF155","fechaPostulacion": "2023-05-28"},
-    {"id": "15","nombre": "Gabriel Torres","preferencia": "3","nota": "77","carrera": "Ingeniería Civil Informática","sede": "Casa Central","estado": "Pendiente","curso": "INF221","fechaPostulacion": "2023-05-29"}
+    {
+      "id": "1",
+      "nombre": "María González",
+      "preferencia": "1",
+      "nota": "78",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Aceptado",
+      "curso": "INF134",
+      "fechaPostulacion": "2023-05-15"
+    },
+    {
+      "id": "2",
+      "nombre": "Juan Pérez",
+      "preferencia": "2",
+      "nota": "85",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF155",
+      "fechaPostulacion": "2023-05-16"
+    },
+    {
+      "id": "3",
+      "nombre": "Ana Silva",
+      "preferencia": "1",
+      "nota": "92",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF221",
+      "fechaPostulacion": "2023-05-17"
+    },
+    {
+      "id": "4",
+      "nombre": "Carlos Muñoz",
+      "preferencia": "3",
+      "nota": "67",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF255",
+      "fechaPostulacion": "2023-05-18"
+    },
+    {
+      "id": "5",
+      "nombre": "Lucía Fernández",
+      "preferencia": "2",
+      "nota": "71",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Pendiente",
+      "curso": "INF134",
+      "fechaPostulacion": "2023-05-19"
+    },
+    {
+      "id": "6",
+      "nombre": "Pedro Sánchez",
+      "preferencia": "1",
+      "nota": "88",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF155",
+      "fechaPostulacion": "2023-05-20"
+    },
+    {
+      "id": "7",
+      "nombre": "Daniela Rojas",
+      "preferencia": "4",
+      "nota": "63",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Pendiente",
+      "curso": "INF221",
+      "fechaPostulacion": "2023-05-21"
+    },
+    {
+      "id": "8",
+      "nombre": "Fernando López",
+      "preferencia": "1",
+      "nota": "95",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF255",
+      "fechaPostulacion": "2023-05-22"
+    },
+    {
+      "id": "9",
+      "nombre": "Roberto Núñez",
+      "preferencia": "2",
+      "nota": "82",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Rechazado",
+      "curso": "INF134",
+      "fechaPostulacion": "2023-05-23"
+    },
+    {
+      "id": "10",
+      "nombre": "Camila Vargas",
+      "preferencia": "1",
+      "nota": "89",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF155",
+      "fechaPostulacion": "2023-05-24"
+    },
+    {
+      "id": "11",
+      "nombre": "Jorge Medina",
+      "preferencia": "3",
+      "nota": "76",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Pendiente",
+      "curso": "INF221",
+      "fechaPostulacion": "2023-05-25"
+    },
+    {
+      "id": "12",
+      "nombre": "Valentina Castro",
+      "preferencia": "1",
+      "nota": "91",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF255",
+      "fechaPostulacion": "2023-05-26"
+    },
+    {
+      "id": "13",
+      "nombre": "Diego Soto",
+      "preferencia": "2",
+      "nota": "69",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Pendiente",
+      "curso": "INF134",
+      "fechaPostulacion": "2023-05-27"
+    },
+    {
+      "id": "14",
+      "nombre": "Paula Herrera",
+      "preferencia": "1",
+      "nota": "84",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "San Joaquín",
+      "estado": "Pendiente",
+      "curso": "INF155",
+      "fechaPostulacion": "2023-05-28"
+    },
+    {
+      "id": "15",
+      "nombre": "Gabriel Torres",
+      "preferencia": "3",
+      "nota": "77",
+      "carrera": "Ingeniería Civil Informática",
+      "sede": "Casa Central",
+      "estado": "Pendiente",
+      "curso": "INF221",
+      "fechaPostulacion": "2023-05-29"
+    }
+  ],
+  "detalles": [
+    {
+      "id": "1",
+      "nombre": "María González",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS110",
+        "INF221"
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Juan Pérez",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "MAT024"
+      ]
+    },
+    {
+      "id": "3",
+      "nombre": "Ana Silva",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS120",
+        "FIS130"
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Carlos Muñoz",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS100",
+        "MAT021",
+        "INF245"
+      ]
+    },
+    {
+      "id": "5",
+      "nombre": "Lucía Fernández",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "INF155"
+      ]
+    },
+    {
+      "id": "6",
+      "nombre": "Pedro Sánchez",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS130",
+        "INF245"
+      ]
+    },
+    {
+      "id": "7",
+      "nombre": "Daniela Rojas",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS120",
+        "INF280"
+      ]
+    },
+    {
+      "id": "8",
+      "nombre": "Fernando López",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "INF280",
+        "IWI131"
+      ]
+    },
+    {
+      "id": "9",
+      "nombre": "Roberto Núñez",
+      "correo": "example@usm.cl",
+      "experiencia": []
+    },
+    {
+      "id": "10",
+      "nombre": "Camila Vargas",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "INF221"
+      ]
+    },
+    {
+      "id": "11",
+      "nombre": "Jorge Medina",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "IWI131"
+      ]
+    },
+    {
+      "id": "12",
+      "nombre": "Valentina Castro",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "FIS100"
+      ]
+    },
+    {
+      "id": "13",
+      "nombre": "Diego Soto",
+      "correo": "example@usm.cl",
+      "experiencia": []
+    },
+    {
+      "id": "14",
+      "nombre": "Paula Herrera",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "INF245",
+        "MAT024"
+      ]
+    },
+    {
+      "id": "15",
+      "nombre": "Gabriel Torres",
+      "correo": "example@usm.cl",
+      "experiencia": [
+        "MAT021"
+      ]
+    }
+  ],
+  "horario": [
+    {
+      "id": "1",
+      "nombre": "Maria González",
+      "horario": {
+        "lunes": [
+          "9-10",
+          "11-12"
+        ],
+        "miercoles": [
+          "7-8",
+          "13-14"
+        ],
+        "viernes": [
+          "3-4"
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "nombre": "Juan Pérez",
+      "horario": {
+        "martes": [
+          "1-2",
+          "5-6"
+        ],
+        "jueves": [
+          "9-10",
+          "11-12"
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "nombre": "Ana Silva",
+      "horario": {
+        "lunes": [
+          "5-6",
+          "7-8"
+        ],
+        "viernes": [
+          "1-2",
+          "3-4"
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "nombre": "Carlos Muñoz",
+      "horario": {
+        "martes": [
+          "11-12",
+          "13-14"
+        ],
+        "jueves": [
+          "3-4"
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "nombre": "Lucía Fernández",
+      "horario": {
+        "miercoles": [
+          "9-10"
+        ],
+        "viernes": [
+          "5-6",
+          "7-8"
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "nombre": "Pedro Sánchez",
+      "horario": {
+        "lunes": [
+          "1-2",
+          "3-4"
+        ],
+        "martes": [
+          "7-8"
+        ],
+        "jueves": [
+          "5-6",
+          "9-10"
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "nombre": "Daniela Rojas",
+      "horario": {
+        "miercoles": [
+          "11-12"
+        ],
+        "viernes": [
+          "13-14"
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "nombre": "Fernando López",
+      "horario": {
+        "lunes": [
+          "7-8",
+          "9-10"
+        ],
+        "jueves": [
+          "1-2",
+          "3-4"
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "nombre": "Roberto Núñez",
+      "horario": {
+        "martes": [
+          "9-10",
+          "11-12"
+        ],
+        "viernes": [
+          "5-6"
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "nombre": "Camila Vargas",
+      "horario": {
+        "lunes": [
+          "13-14"
+        ],
+        "miercoles": [
+          "1-2",
+          "5-6"
+        ],
+        "viernes": [
+          "7-8"
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "nombre": "Jorge Medina",
+      "horario": {
+        "martes": [
+          "3-4",
+          "7-8"
+        ],
+        "jueves": [
+          "11-12",
+          "13-14"
+        ]
+      }
+    },
+    {
+      "id": "12",
+      "nombre": "Valentina Castro",
+      "horario": {
+        "lunes": [
+          "5-6"
+        ],
+        "miercoles": [
+          "9-10",
+          "11-12"
+        ],
+        "viernes": [
+          "1-2"
+        ]
+      }
+    },
+    {
+      "id": "13",
+      "nombre": "Diego Soto",
+      "horario": {
+        "martes": [
+          "1-2",
+          "5-6"
+        ],
+        "jueves": [
+          "7-8"
+        ]
+      }
+    },
+    {
+      "id": "14",
+      "nombre": "Paula Herrera",
+      "horario": {
+        "lunes": [
+          "11-12"
+        ],
+        "miercoles": [
+          "3-4",
+          "7-8"
+        ],
+        "viernes": [
+          "9-10"
+        ]
+      }
+    },
+    {
+      "id": "15",
+      "nombre": "Gabriel Torres",
+      "horario": {
+        "martes": [
+          "13-14"
+        ],
+        "jueves": [
+          "5-6",
+          "9-10"
+        ]
+      }
+    }
   ]
 }
