@@ -244,18 +244,18 @@ let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
                   </td>
                   <td>
                     <input
-                      type="checkbox"
+                      type="radio"
                       checked={!!seleccionAceptar[p.id]}
                       onChange={(e) => handleSeleccionAceptar(p.id, e)}
-                      className="checkbox-aceptar"
+                      className="radio-aceptar"
                     />
                   </td>
                   <td>
                     <input
-                      type="checkbox"
+                      type="radio"
                       checked={!!seleccionRechazar[p.id]}
                       onChange={(e) => handleSeleccionRechazar(p.id, e)}
-                      className="checkbox-rechazar"
+                      className="radio-rechazar"
                     />
                   </td>
                 </tr>

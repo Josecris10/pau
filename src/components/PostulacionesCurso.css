@@ -69,11 +69,11 @@
   box-shadow: none;
 }
 
-.checkbox-aceptar {
+.radio-aceptar {
   accent-color: #4CAF50;
 }
 
-.checkbox-rechazar {
+.radio-rechazar {
   accent-color: #f44336;
 }
 
