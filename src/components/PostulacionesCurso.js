@@ -1,18 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import './PostulacionesCurso.css';
 
-
 const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const [postulaciones, setPostulaciones] = useState([]);
+  const [seleccionAceptar, setSeleccionAceptar] = useState({});
+  const [seleccionRechazar, setSeleccionRechazar] = useState({});
   const [orden, setOrden] = useState({
     campo: null,
     direccion: 'asc'
   });
-  console.log("usuario en postulacionescurso", usuario);
-  console.log("curso en postulacionesCurso:", curso);
-  console.log("cursousuarios en postulacionescurso:", cursoUsuarios);
 
-  // Función pura para ordenamiento
+  // Función para ordenar postulaciones
   const ordenarPostulaciones = (lista, campo, direccion) => {
     if (!campo) return lista;
     
@@ -25,7 +23,7 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
       else if (campo === 'preferencia') {
         comparacion = parseInt(a.preferencia) - parseInt(b.preferencia);
       }
-	  else if (campo === 'nota') {
+      else if (campo === 'nota') {
         comparacion = parseInt(a.nota) - parseInt(b.nota);
       }
       else {
@@ -36,6 +34,7 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
     });
   };
 
+  // Manejar ordenamiento
   const handleSort = (campo) => {
     setOrden(prev => {
       const nuevaDireccion = prev.campo === campo && prev.direccion === 'asc' ? 'desc' : 'asc';
@@ -43,23 +42,86 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
     });
   };
 
-  // Postulaciones ordenadas usando useMemo para optimización
-  const postulacionesOrdenadas = useMemo(() => {
-    return ordenarPostulaciones(postulaciones, orden.campo, orden.direccion);
-  }, [postulaciones, orden]);
-  
+  // Obtener icono de orden
   const obtenerIconoOrden = (campo) => {
     if (orden.campo !== campo) return null;
     return orden.direccion === 'asc' ? '↑' : '↓';
   };
-  
-  const relacion = cursoUsuarios.find(
-    cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
-  );
-  const esCoordinador = relacion?.rol === 'coordinador';
-  const sedeUsuario = relacion?.sede;
 
+  // Postulaciones ordenadas
+  const postulacionesOrdenadas = useMemo(() => {
+    return ordenarPostulaciones(postulaciones, orden.campo, orden.direccion);
+  }, [postulaciones, orden]);
 
+  // Manejar selección para aceptar
+  const handleSeleccionAceptar = (id, e) => {
+    const isChecked = e.target.checked;
+    setSeleccionAceptar(prev => ({ ...prev, [id]: isChecked }));
+    // Deseleccionar automáticamente "Rechazar" si se marca "Aceptar"
+    if (isChecked) {
+      setSeleccionRechazar(prev => ({ ...prev, [id]: false }));
+    }
+  };
+
+  // Manejar selección para rechazar
+  const handleSeleccionRechazar = (id, e) => {
+    const isChecked = e.target.checked;
+    setSeleccionRechazar(prev => ({ ...prev, [id]: isChecked }));
+    // Deseleccionar automáticamente "Aceptar" si se marca "Rechazar"
+    if (isChecked) {
+      setSeleccionAceptar(prev => ({ ...prev, [id]: false }));
+    }
+  };
+
+  // Actualizar estados de las postulaciones seleccionadas
+  const actualizarEstados = async () => {
+    const idsAceptar = Object.keys(seleccionAceptar).filter(id => seleccionAceptar[id]);
+    const idsRechazar = Object.keys(seleccionRechazar).filter(id => seleccionRechazar[id]);
+    
+    if (idsAceptar.length === 0 && idsRechazar.length === 0) {
+      alert('Por favor selecciona al menos una postulación');
+      return;
+    }
+
+    try {
+      // Actualizar postulaciones aceptadas
+      await Promise.all(idsAceptar.map(async (id) => {
+        const response = await fetch(`http://localhost:3001/postulaciones/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado: 'Aceptado' }),
+        });
+        if (!response.ok) throw new Error(`Error al aceptar postulación ${id}`);
+      }));
+
+      // Actualizar postulaciones rechazadas
+      await Promise.all(idsRechazar.map(async (id) => {
+        const response = await fetch(`http://localhost:3001/postulaciones/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado: 'Rechazado' }),
+        });
+        if (!response.ok) throw new Error(`Error al rechazar postulación ${id}`);
+      }));
+
+      // Actualizar estado local
+      setPostulaciones(prev => prev.map(p => {
+        if (seleccionAceptar[p.id]) return { ...p, estado: 'Aceptado' };
+        if (seleccionRechazar[p.id]) return { ...p, estado: 'Rechazado' };
+        return p;
+      }));
+
+      // Limpiar selecciones
+      setSeleccionAceptar({});
+      setSeleccionRechazar({});
+      alert('Estados actualizados correctamente');
+    } catch (error) {
+      console.error('Error al actualizar estados:', error);
+      alert('Ocurrió un error al actualizar los estados');
+    }
+  };
+
+  // Obtener datos iniciales
   useEffect(() => {
     if (!curso) return;
     
@@ -69,19 +131,38 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
         const data = await res.json();
         let postulacionesCurso = data.filter(p => p.curso === curso.codigo);
 
-        if (!esCoordinador && sedeUsuario){
+        const relacion = cursoUsuarios.find(
+          cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
+        );
+        const esCoordinador = relacion?.rol === 'coordinador';
+        const sedeUsuario = relacion?.sede;
+
+        if (!esCoordinador && sedeUsuario) {
           postulacionesCurso = postulacionesCurso.filter(p => p.sede === sedeUsuario);
         }
+        
         setPostulaciones(postulacionesCurso);
       } catch (error) {
         console.error("Error al cargar postulaciones:", error);
       }
     };
-    
-
 
     fetchData();
-  }, [curso, esCoordinador, sedeUsuario]);
+  }, [curso, usuario.id, cursoUsuarios]);
+
+  // Inicializar selecciones basadas en el estado actual
+  useEffect(() => {
+    const inicialAceptar = {};
+    const inicialRechazar = {};
+    
+    postulaciones.forEach(p => {
+      if (p.estado === 'Aceptado') inicialAceptar[p.id] = true;
+      if (p.estado === 'Rechazado') inicialRechazar[p.id] = true;
+    });
+
+    setSeleccionAceptar(inicialAceptar);
+    setSeleccionRechazar(inicialRechazar);
+  }, [postulaciones]);
 
   if (!curso) {
     return <p>Cargando curso...</p>;
@@ -93,36 +174,71 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
       {postulaciones.length === 0 ? (
         <p>No hay postulaciones para este curso.</p>
       ) : (
-        <table className="postulaciones-table">
-          <thead>
-            <tr>
-              <th onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
-              <th onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
-              <th onClick={() => handleSort('nota')}>Nota de presentacion {obtenerIconoOrden('nota')}</th>
-              <th>Carrera</th>
-              <th>Fecha</th>
-              <th>Sede</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {postulacionesOrdenadas.map(p => (
-              <tr key={p.id}>
-                <td>{p.nombre}</td>
-                <td>{p.preferencia}</td>
-                <td>{p.nota}</td>
-                <td>{p.carrera}</td>
-                <td>{p.fechaPostulacion}</td>
-                <td>{p.sede}</td>
-                <td className={
-                  p.estado === 'Aceptado' ? 'estado-aceptado' :
-                  p.estado === 'Pendiente' ? 'estado-pendiente' :
-                  p.estado === 'Rechazado' ? 'estado-rechazado' : ''
-                }>{p.estado}</td>
+        <>
+          <table className="postulaciones-table">
+            <thead>
+              <tr>
+                <th>Aceptar</th>
+                <th>Rechazar</th>
+                <th onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
+                <th onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
+                <th onClick={() => handleSort('nota')}>Nota {obtenerIconoOrden('nota')}</th>
+                <th>Carrera</th>
+                <th>Fecha</th>
+                <th>Sede</th>
+                <th>Estado</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {postulacionesOrdenadas.map(p => (
+                <tr key={p.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={!!seleccionAceptar[p.id]}
+                      onChange={(e) => handleSeleccionAceptar(p.id, e)}
+                      className="checkbox-aceptar"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={!!seleccionRechazar[p.id]}
+                      onChange={(e) => handleSeleccionRechazar(p.id, e)}
+                      className="checkbox-rechazar"
+                    />
+                  </td>
+                  <td>{p.nombre}</td>
+                  <td>{p.preferencia}</td>
+                  <td>{p.nota}</td>
+                  <td>{p.carrera}</td>
+                  <td>{p.fechaPostulacion}</td>
+                  <td>{p.sede}</td>
+                  <td className={
+                    p.estado === 'Aceptado' ? 'estado-aceptado' :
+                    p.estado === 'Pendiente' ? 'estado-pendiente' :
+                    'estado-rechazado'
+                  }>
+                    {p.estado}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          
+          <div className="acciones-container">
+            <button
+              onClick={actualizarEstados}
+              className="boton-confirmar"
+              disabled={
+                !Object.values(seleccionAceptar).some(sel => sel) &&
+                !Object.values(seleccionRechazar).some(sel => sel)
+              }
+            >
+              Confirmar Cambios
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
