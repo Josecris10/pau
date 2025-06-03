@@ -55,17 +55,32 @@ const Cursos = ({ usuario, onSeleccionarCurso }) => {
                 {curso.nombre} ({curso.codigo})
               </button>
               <div style={{ textAlign: 'center', marginTop: '6px' }}>
-                <button
-                  className="acceso-rol-button"
-                  onClick={() => onSeleccionarCurso({ codigo: curso.codigo, rol: 'profesor' })}
-                >
-                  Acceder como profesor
-                </button>
+                {curso.perfilCurso === 'profesor' || curso.perfilCurso === 'coordinador' ? (
+                  <button
+                    className="acceso-rol-button"
+                    onClick={() =>
+                      onSeleccionarCurso({
+                        codigo: curso.codigo,
+                        perfil: 'profesor',
+                        sede: usuario.sede,
+                      })
+                    }
+                  >
+                    Acceder como profesor
+                  </button>
+                ) : null}
+
                 {curso.perfilCurso === 'coordinador' && (
                   <button
                     className="acceso-rol-button"
                     style={{ marginLeft: '10px' }}
-                    onClick={() => onSeleccionarCurso({ codigo: curso.codigo, rol: 'coordinador' })}
+                    onClick={() =>
+                      onSeleccionarCurso({
+                        codigo: curso.codigo,
+                        perfil: 'coordinador',
+                        sede: usuario.sede,
+                      })
+                    }
                   >
                     Acceder como coordinador
                   </button>

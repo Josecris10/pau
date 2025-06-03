@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import './PostulacionesCurso.css';
 import Detalle from './Detalle.js';
 
-const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
+const PostulacionesCurso = ({ curso, perfil, usuario, cursoUsuarios }) => {
   const [postulaciones, setPostulaciones] = useState([]);
   const [seleccionAceptar, setSeleccionAceptar] = useState({});
   const [seleccionRechazar, setSeleccionRechazar] = useState({});
@@ -59,9 +59,8 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const relacion = cursoUsuarios.find(
     cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
   );
-  const esCoordinador = relacion?.rol === 'coordinador';
-  const sedeUsuario = relacion?.sede;
-
+  const esCoordinador = perfil === 'coordinador';
+  const sedeUsuario = usuario?.sede;
   // Postulaciones ordenadas
   const postulacionesOrdenadas = useMemo(() => {
     return ordenarPostulaciones(postulaciones, orden.campo, orden.direccion);
@@ -144,23 +143,20 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
         const postRes = await fetch("http://localhost:3001/postulaciones");
 	      if (!postRes.ok) throw new Error(`Error postulaciones: ${postRes.status}`);
 	      const post = await postRes.json();
-	      console.log('Postulaciones cargadas:', post);
 
 	      const detallesRes = await fetch("http://localhost:3001/detalles");
 	      if (!detallesRes.ok) throw new Error(`Error detalles: ${detallesRes.status}`);
 	      const detalles = await detallesRes.json();
-	      console.log('Detalles cargados:', detalles);
 
 	      const horarioRes = await fetch("http://localhost:3001/horario");
 	      if (!horarioRes.ok) throw new Error(`Error horario: ${horarioRes.status}`);
 	      const horario = await horarioRes.json();
-	      console.log('Horarios cargados:', horario);
 
 let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
     if (!esCoordinador && sedeUsuario) {
       postulacionesFiltradas = postulacionesFiltradas.filter(p => p.sede === sedeUsuario);
     }
-
+    console.log('el rol es : ', sedeUsuario);
     console.log('Postulaciones filtradas:', postulacionesFiltradas);
     
     // Establecer estados

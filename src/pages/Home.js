@@ -7,8 +7,11 @@ import './Home.css';
 const Home = () => {
     const { user } = useContext(AuthContext);
     const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
+    const handleSeleccionarCurso = ({ codigo, perfil, sede }) => {
+        setCursoSeleccionado({ codigo, perfil, sede});
+    };
     const [cursoUsuarios, setCursoUsuarios] = useState([]);
-
+    
     useEffect(() => {
         const fetchCursoUsuarios = async () => {
             try {
@@ -52,6 +55,7 @@ const Home = () => {
                             </button>
                             <PostulacionesCurso
                                 curso={cursoSeleccionado}
+                                perfil={cursoSeleccionado.perfil}
                                 usuario={user}
                                 cursoUsuarios={cursoUsuarios}
                             />
