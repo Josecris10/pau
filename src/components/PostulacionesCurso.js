@@ -1,10 +1,18 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import './PostulacionesCurso.css';
+import Detalle from './Detalle.js';
 
 const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const [postulaciones, setPostulaciones] = useState([]);
   const [seleccionAceptar, setSeleccionAceptar] = useState({});
   const [seleccionRechazar, setSeleccionRechazar] = useState({});
+
+  const [detalles, setDetalles] = useState([]);
+  const [horario, setHorario] = useState([]);
+
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [orden, setOrden] = useState({
     campo: null,
     direccion: 'asc'
@@ -47,6 +55,12 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
     if (orden.campo !== campo) return null;
     return orden.direccion === 'asc' ? '↑' : '↓';
   };
+
+  const relacion = cursoUsuarios.find(
+    cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
+  );
+  const esCoordinador = relacion?.rol === 'coordinador';
+  const sedeUsuario = relacion?.sede;
 
   // Postulaciones ordenadas
   const postulacionesOrdenadas = useMemo(() => {
@@ -125,30 +139,45 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   useEffect(() => {
     if (!curso) return;
     
-    const fetchData = async () => {
+    const fetchAllData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/postulaciones");
-        const data = await res.json();
-        let postulacionesCurso = data.filter(p => p.curso === curso.codigo);
+        const postRes = await fetch("http://localhost:3001/postulaciones");
+	      if (!postRes.ok) throw new Error(`Error postulaciones: ${postRes.status}`);
+	      const post = await postRes.json();
+	      console.log('Postulaciones cargadas:', post);
 
-        const relacion = cursoUsuarios.find(
-          cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
-        );
-        const esCoordinador = relacion?.rol === 'coordinador';
-        const sedeUsuario = relacion?.sede;
+	      const detallesRes = await fetch("http://localhost:3001/detalles");
+	      if (!detallesRes.ok) throw new Error(`Error detalles: ${detallesRes.status}`);
+	      const detalles = await detallesRes.json();
+	      console.log('Detalles cargados:', detalles);
 
-        if (!esCoordinador && sedeUsuario) {
-          postulacionesCurso = postulacionesCurso.filter(p => p.sede === sedeUsuario);
-        }
-        
-        setPostulaciones(postulacionesCurso);
-      } catch (error) {
-        console.error("Error al cargar postulaciones:", error);
-      }
-    };
+	      const horarioRes = await fetch("http://localhost:3001/horario");
+	      if (!horarioRes.ok) throw new Error(`Error horario: ${horarioRes.status}`);
+	      const horario = await horarioRes.json();
+	      console.log('Horarios cargados:', horario);
 
-    fetchData();
-  }, [curso, usuario.id, cursoUsuarios]);
+let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
+    if (!esCoordinador && sedeUsuario) {
+      postulacionesFiltradas = postulacionesFiltradas.filter(p => p.sede === sedeUsuario);
+    }
+
+    console.log('Postulaciones filtradas:', postulacionesFiltradas);
+    
+    // Establecer estados
+    setPostulaciones(postulacionesFiltradas);
+    setDetalles(detalles);
+    setHorario(horario);
+
+  } catch (err) {
+    console.error("Error al cargar datos:", err);
+    setError("Error al cargar los datos. Por favor intente nuevamente.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+    fetchAllData();
+  }, [curso, esCoordinador, sedeUsuario]);
 
   // Inicializar selecciones basadas en el estado actual
   useEffect(() => {
@@ -178,8 +207,6 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
           <table className="postulaciones-table">
             <thead>
               <tr>
-                <th>Aceptar</th>
-                <th>Rechazar</th>
                 <th onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
                 <th onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
                 <th onClick={() => handleSort('nota')}>Nota {obtenerIconoOrden('nota')}</th>
@@ -187,11 +214,34 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
                 <th>Fecha</th>
                 <th>Sede</th>
                 <th>Estado</th>
+                <th>Mas Informacion</th>
+                <th>Aceptar</th>
+                <th>Rechazar</th>
               </tr>
             </thead>
             <tbody>
               {postulacionesOrdenadas.map(p => (
                 <tr key={p.id}>
+                  <td>{p.nombre}</td>
+                  <td>{p.preferencia}</td>
+                  <td>{p.nota}</td>
+                  <td>{p.carrera}</td>
+                  <td>{p.fechaPostulacion}</td>
+                  <td>{p.sede}</td>
+                  <td className={
+                    p.estado === 'Aceptado' ? 'estado-aceptado' :
+                    p.estado === 'Pendiente' ? 'estado-pendiente' :
+                    'estado-rechazado'
+                  }>
+                    {p.estado}
+                  </td>
+                  <td>
+                    <Detalle
+                        postulante={p}
+                        detallesData={detalles}
+                        horarioData={horario}
+                    />
+                  </td>
                   <td>
                     <input
                       type="checkbox"
@@ -207,19 +257,6 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
                       onChange={(e) => handleSeleccionRechazar(p.id, e)}
                       className="checkbox-rechazar"
                     />
-                  </td>
-                  <td>{p.nombre}</td>
-                  <td>{p.preferencia}</td>
-                  <td>{p.nota}</td>
-                  <td>{p.carrera}</td>
-                  <td>{p.fechaPostulacion}</td>
-                  <td>{p.sede}</td>
-                  <td className={
-                    p.estado === 'Aceptado' ? 'estado-aceptado' :
-                    p.estado === 'Pendiente' ? 'estado-pendiente' :
-                    'estado-rechazado'
-                  }>
-                    {p.estado}
                   </td>
                 </tr>
               ))}
