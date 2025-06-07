@@ -16,7 +16,7 @@ const DetallePostulante = ({ postulante, detallesData, horarioData }) => {
     // Función para formatear la experiencia
     const formatExperiencia = (exp) => {
       if (!exp || exp.length === 0) return 'Ninguna registrada';
-      return exp.join(', ');
+      return exp.join('<br>');
     };
 
     // Función para formatear el horario
@@ -78,6 +78,8 @@ const DetallePostulante = ({ postulante, detallesData, horarioData }) => {
             <h2>Información Básica</h2>
             <div class="info-item"><strong>Nombre:</strong> ${postulante.nombre}</div>
             <div class="info-item"><strong>Correo:</strong> ${detalles.correo || 'No registrado'}</div>
+            <div class="info-item"><strong>Carrera:</strong> ${postulante.carrera}</div>
+            <div class="info-item"><strong>Sede:</strong> ${postulante.sede}</div>
           </div>
 
           <button class="toggle-btn" onclick="document.getElementById('info-avanzada').style.display='block';this.style.display='none'">

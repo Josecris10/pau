@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import './PostulacionesCurso.css';
 import Detalle from './Detalle.js';
 
-const PostulacionesCurso = ({ curso, perfil, usuario, cursoUsuarios }) => {
+const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const [postulaciones, setPostulaciones] = useState([]);
   const [seleccionAceptar, setSeleccionAceptar] = useState({});
   const [seleccionRechazar, setSeleccionRechazar] = useState({});
@@ -32,7 +32,7 @@ const PostulacionesCurso = ({ curso, perfil, usuario, cursoUsuarios }) => {
         comparacion = parseInt(a.preferencia) - parseInt(b.preferencia);
       }
       else if (campo === 'nota') {
-        comparacion = parseInt(a.nota) - parseInt(b.nota);
+        comparacion = parseInt(b.nota) - parseInt(a.nota);
       }
       else {
         return 0;
@@ -59,8 +59,9 @@ const PostulacionesCurso = ({ curso, perfil, usuario, cursoUsuarios }) => {
   const relacion = cursoUsuarios.find(
     cu => cu.codigo === curso.codigo && cu.usuarioId === usuario.id
   );
-  const esCoordinador = perfil === 'coordinador';
-  const sedeUsuario = usuario?.sede;
+  const esCoordinador = relacion?.rol === 'coordinador';
+  const sedeUsuario = relacion?.sede;
+
   // Postulaciones ordenadas
   const postulacionesOrdenadas = useMemo(() => {
     return ordenarPostulaciones(postulaciones, orden.campo, orden.direccion);
@@ -156,7 +157,7 @@ let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
     if (!esCoordinador && sedeUsuario) {
       postulacionesFiltradas = postulacionesFiltradas.filter(p => p.sede === sedeUsuario);
     }
-    console.log('el rol es : ', sedeUsuario);
+
     console.log('Postulaciones filtradas:', postulacionesFiltradas);
     
     // Establecer estados
@@ -206,11 +207,8 @@ let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
                 <th onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
                 <th onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
                 <th onClick={() => handleSort('nota')}>Nota {obtenerIconoOrden('nota')}</th>
-                <th>Carrera</th>
-                <th>Fecha</th>
-                <th>Sede</th>
                 <th>Estado</th>
-                <th>Mas Informacion</th>
+                <th>Mas Información</th>
                 <th>Aceptar</th>
                 <th>Rechazar</th>
               </tr>
@@ -221,9 +219,6 @@ let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
                   <td>{p.nombre}</td>
                   <td>{p.preferencia}</td>
                   <td>{p.nota}</td>
-                  <td>{p.carrera}</td>
-                  <td>{p.fechaPostulacion}</td>
-                  <td>{p.sede}</td>
                   <td className={
                     p.estado === 'Aceptado' ? 'estado-aceptado' :
                     p.estado === 'Pendiente' ? 'estado-pendiente' :
