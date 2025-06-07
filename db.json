@@ -1,7 +1,7 @@
 {
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Pedro Riquelme Mora",
       "email": "pedro.riquelmem@usm.cl",
       "password": "1234",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Claudia González Espinoza",
       "email": "claudia.gonzalez@usm.cl",
       "password": "1234",
@@ -25,25 +25,25 @@
   ],
   "cursoUsuarios": [
     {
-      "id": 1,
+      "id": "1",
       "usuarioId": 1,
       "codigo": "INF134",
       "perfil": "profesor"
     },
     {
-      "id": 2,
+      "id": "2",
       "usuarioId": 1,
       "codigo": "INF155",
       "perfil": "profesor"
     },
     {
-      "id": 3,
+      "id": "3",
       "usuarioId": 2,
       "codigo": "INF221",
       "perfil": "coordinador"
     },
     {
-      "id": 4,
+      "id": "4",
       "usuarioId": 2,
       "codigo": "INF255",
       "perfil": "profesor"
@@ -54,49 +54,57 @@
       "codigo": "INF134",
       "nombre": "Estructuras de Datos",
       "paralelo": 200,
-      "sede": "San Joaquín"
+      "sede": "San Joaquín",
+      "id": "d256"
     },
     {
       "codigo": "INF134",
       "nombre": "Estructuras de Datos",
       "paralelo": 1,
-      "sede": "Casa Central"
+      "sede": "Casa Central",
+      "id": "bee2"
     },
     {
       "codigo": "INF155",
       "nombre": "Bases de Datos",
       "paralelo": 200,
-      "sede": "San Joaquín"
+      "sede": "San Joaquín",
+      "id": "3eba"
     },
     {
       "codigo": "INF155",
       "nombre": "Bases de Datos",
       "paralelo": 1,
-      "sede": "Casa Central"
+      "sede": "Casa Central",
+      "id": "7eab"
     },
     {
       "codigo": "INF221",
       "nombre": "Algoritmos y Complejidad",
       "paralelo": 200,
-      "sede": "San Joaquín"
+      "sede": "San Joaquín",
+      "id": "ebb5"
     },
     {
       "codigo": "INF221",
       "nombre": "Algoritmos y Complejidad",
       "paralelo": 1,
-      "sede": "Casa Central"
+      "sede": "Casa Central",
+      "id": "6ce7"
     },
     {
       "codigo": "INF255",
       "nombre": "Redes de Computadores",
       "paralelo": 200,
-      "sede": "San Joaquín"
+      "sede": "San Joaquín",
+      "id": "8e13"
     },
     {
       "codigo": "INF255",
       "nombre": "Redes de Computadores",
       "paralelo": 1,
-      "sede": "Casa Central"
+      "sede": "Casa Central",
+      "id": "ca30"
     }
   ],
   "postulaciones": [
@@ -107,7 +115,7 @@
       "nota": "78",
       "carrera": "Ingeniería Civil Informática",
       "sede": "Casa Central",
-      "estado": "Aceptado",
+      "estado": "Pendiente",
       "curso": "INF134",
       "fechaPostulacion": "2023-05-15"
     },
@@ -195,7 +203,7 @@
       "nota": "82",
       "carrera": "Ingeniería Civil Informática",
       "sede": "Casa Central",
-      "estado": "Rechazado",
+      "estado": "Pendiente",
       "curso": "INF134",
       "fechaPostulacion": "2023-05-23"
     },
@@ -272,8 +280,8 @@
       "nombre": "María González",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS110",
-        "INF221"
+        "FIS110 - Laboratorio",
+        "INF221 - Catedra"
       ]
     },
     {
@@ -281,7 +289,7 @@
       "nombre": "Juan Pérez",
       "correo": "example@usm.cl",
       "experiencia": [
-        "MAT024"
+        "MAT024 - Corrector"
       ]
     },
     {
@@ -289,8 +297,8 @@
       "nombre": "Ana Silva",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS120",
-        "FIS130"
+        "FIS120 - Catedra",
+        "FIS130 - Laboratorio"
       ]
     },
     {
@@ -298,9 +306,9 @@
       "nombre": "Carlos Muñoz",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS100",
-        "MAT021",
-        "INF245"
+        "FIS100 - Catedra",
+        "MAT021 - Catedra",
+        "INF245 - Catedra"
       ]
     },
     {
@@ -308,7 +316,7 @@
       "nombre": "Lucía Fernández",
       "correo": "example@usm.cl",
       "experiencia": [
-        "INF155"
+        "INF155 - Catedra"
       ]
     },
     {
@@ -316,8 +324,8 @@
       "nombre": "Pedro Sánchez",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS130",
-        "INF245"
+        "FIS130 - Catedra",
+        "INF245 - Laboratorio"
       ]
     },
     {
@@ -325,8 +333,8 @@
       "nombre": "Daniela Rojas",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS120",
-        "INF280"
+        "FIS120 - Laboratorio",
+        "INF280 - Corrector"
       ]
     },
     {
@@ -334,8 +342,8 @@
       "nombre": "Fernando López",
       "correo": "example@usm.cl",
       "experiencia": [
-        "INF280",
-        "IWI131"
+        "INF280 - Catedra",
+        "IWI131 - Catedra"
       ]
     },
     {
@@ -349,7 +357,7 @@
       "nombre": "Camila Vargas",
       "correo": "example@usm.cl",
       "experiencia": [
-        "INF221"
+        "INF221 - Corrector"
       ]
     },
     {
@@ -357,7 +365,7 @@
       "nombre": "Jorge Medina",
       "correo": "example@usm.cl",
       "experiencia": [
-        "IWI131"
+        "IWI131 - Laboratorio"
       ]
     },
     {
@@ -365,7 +373,7 @@
       "nombre": "Valentina Castro",
       "correo": "example@usm.cl",
       "experiencia": [
-        "FIS100"
+        "FIS100 - Catedra"
       ]
     },
     {
@@ -379,8 +387,8 @@
       "nombre": "Paula Herrera",
       "correo": "example@usm.cl",
       "experiencia": [
-        "INF245",
-        "MAT024"
+        "INF245 - Catedra",
+        "MAT024 - Catedra"
       ]
     },
     {
@@ -388,7 +396,7 @@
       "nombre": "Gabriel Torres",
       "correo": "example@usm.cl",
       "experiencia": [
-        "MAT021"
+        "MAT021 - Catedra"
       ]
     }
   ],
