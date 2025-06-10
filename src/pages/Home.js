@@ -7,11 +7,9 @@ import './Home.css';
 const Home = () => {
     const { user } = useContext(AuthContext);
     const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
-    const handleSeleccionarCurso = ({ codigo, perfil, sede }) => {
-        setCursoSeleccionado({ codigo, perfil, sede});
-    };
+    const [rolDocente, setRolDocente] = useState(null);
     const [cursoUsuarios, setCursoUsuarios] = useState([]);
-    
+
     useEffect(() => {
         const fetchCursoUsuarios = async () => {
             try {
@@ -44,21 +42,57 @@ const Home = () => {
 
             {user ? (
                 <>
-                    <p>Perfil de <strong>{user.perfil}</strong> - {user.nombre}</p>
+            {/*Navegacion tipo migas de pan*/}
+                    <p>
+                      <span 
+                        onClick={() => {
+                          setRolDocente(null);
+                          setCursoSeleccionado(null);
+                        }}
+                        style={{cursor: 'pointer'}}
+                      >
+                        Inicio
+                      </span>
+                      {rolDocente && (
+                        <>
+                          -> <span 
+                               onClick={() => setCursoSeleccionado(null)}
+                               style={{cursor: 'pointer'}}
+                             >
+                               {rolDocente}
+                             </span>
+                        </>
+                      )}
+                      {cursoSeleccionado && `-> ${cursoSeleccionado.codigo}`}
+                    </p>
 
-                    {!cursoSeleccionado ? (
-                        <Cursos usuario={user} onSeleccionarCurso={setCursoSeleccionado} />
+                    {!rolDocente ? (
+                        <>
+                            <p> Elegir su rol </p>
+                            <button onClick={() => setRolDocente("Profesor")}> Profesor </button>
+                            <button onClick={() => setRolDocente("Coordinador")}> Coordinador </button>
+                        </>
                     ) : (
                         <>
-                            <button className="volver-button" onClick={() => setCursoSeleccionado(null)}>
-                                Volver a cursos
-                            </button>
-                            <PostulacionesCurso
-                                curso={cursoSeleccionado}
-                                perfil={cursoSeleccionado.perfil}
-                                usuario={user}
-                                cursoUsuarios={cursoUsuarios}
-                            />
+                            {!cursoSeleccionado ? (
+                                <>
+                                    <Cursos usuario={user} onSeleccionarCurso={setCursoSeleccionado} />
+                                    <button className="volver-button" onClick={() => setRolDocente(null)}>
+                                        Volver
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button className="volver-button" onClick={() => setCursoSeleccionado(null)}>
+                                        Volver a cursos
+                                    </button>
+                                    <PostulacionesCurso
+                                        curso={cursoSeleccionado}
+                                        usuario={user}
+                                        cursoUsuarios={cursoUsuarios}
+                                    />
+                                </>
+                            )}
                         </>
                     )}
                 </>
