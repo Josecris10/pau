@@ -4,6 +4,9 @@ import Cursos from '../components/Cursos';
 import PostulacionesCurso from '../components/PostulacionesCurso';
 import './Home.css';
 
+import prof from '../assets/Profesor.png';
+import coor from '../assets/Coordinador.png';
+
 const Home = () => {
     const { user } = useContext(AuthContext);
     const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
@@ -68,9 +71,13 @@ const Home = () => {
 
                     {!rolDocente ? (
                         <>
-                            <p> Elegir su rol </p>
-                            <button onClick={() => setRolDocente("Profesor")}> Profesor </button>
-                            <button onClick={() => setRolDocente("Coordinador")}> Coordinador </button>
+                            <h2> Elegir su rol </h2>
+                            <button onClick={() => setRolDocente("Profesor")}>
+                                <img src={prof} alt="Profesor" style={{ width: "400px", height: "400px" }}></img>
+                            </button>
+                            <button onClick={() => setRolDocente("Coordinador")}>
+                                <img src={coor} alt="Coordinador" style={{ width: "400px", height: "400px" }}></img>
+                            </button>
                         </>
                     ) : (
                         <>
