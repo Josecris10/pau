@@ -44,7 +44,7 @@ const Cursos = ({ usuario, onSeleccionarCurso }) => {
 
   return (
     <div className="cursos-container">
-      <h3>Tus cursos</h3>
+      <h3 className="titulo-principal">Tus cursos</h3>
       {cursosPorCodigo.length === 0 ? (
         <p>No tienes cursos asignados.</p>
       ) : (

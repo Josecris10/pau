@@ -3,11 +3,61 @@
   margin-top: 20px;
 }
 
+.titulo-principal {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: black;
+}
+
+.mensaje-principal{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: #333;
+}
+
+.breadcrumb {
+  margin: 20px;
+  font-size: 16px;
+  color: #003e79;
+  cursor: pointer;
+}
+
 .menu-buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+}
+
+.rol-opcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.rol-img {
+  width: 90vw;
+  max-width: 350px;
+  height: auto;
+  max-height: 350px;
+  display: block;
+  transition: trasnform 0.2s;
+}
+
+.rol-opcion:hover .rol-img {
+  transform: scale(1.05);
+}
+
+.rol.opcion p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .menu-button {
@@ -25,7 +75,21 @@
 }
 
 .volver-button {
-    margin: 10px 0;
+    margin: 10px 20px;
+    padding: 8px 14px;
+    background-color: #005B89;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.volver-cursos-button {
+    position: fixed;
+    bottom: 20px;
+    padding: 10px 20px;
+    margin: 10px 20px;
     padding: 8px 14px;
     background-color: #005B89;
     color: rgb(255, 255, 255);
@@ -36,5 +100,9 @@
 }
 
 .volver-button:hover {
+    background-color: #014668;
+}
+
+.volver-cursos-button:hover {
     background-color: #014668;
 }

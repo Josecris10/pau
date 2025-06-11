@@ -41,18 +41,17 @@ const Home = () => {
 
     return (
         <div className="home-container">
-            {!user && <h2>Bienvenido a la Plataforma de Ayudantías Unificada</h2>}
+            {!user && <h2 className="titulo-principal">Bienvenido a la Plataforma de Ayudantías Unificada</h2>}
 
             {user ? (
                 <>
             {/*Navegacion tipo migas de pan*/}
-                    <p>
+                    <p className="breadcrumb">
                       <span 
                         onClick={() => {
                           setRolDocente(null);
                           setCursoSeleccionado(null);
                         }}
-                        style={{cursor: 'pointer'}}
                       >
                         Inicio
                       </span>
@@ -60,7 +59,6 @@ const Home = () => {
                         <>
                           -> <span 
                                onClick={() => setCursoSeleccionado(null)}
-                               style={{cursor: 'pointer'}}
                              >
                                {rolDocente}
                              </span>
@@ -71,13 +69,17 @@ const Home = () => {
 
                     {!rolDocente ? (
                         <>
-                            <h2> Elegir su rol </h2>
-                            <button onClick={() => setRolDocente("Profesor")}>
-                                <img src={prof} alt="Profesor" style={{ width: "400px", height: "400px" }}></img>
-                            </button>
-                            <button onClick={() => setRolDocente("Coordinador")}>
-                                <img src={coor} alt="Coordinador" style={{ width: "400px", height: "400px" }}></img>
-                            </button>
+                            <h2 className="titulo-principal"> ¡Bienvenido! Elige tu perfil. </h2>
+                            <div className="menu-buttons">
+                                <div className="rol-opcion" onClick={() => setRolDocente("Profesor")}>
+                                    <img src={prof} alt="Profesor" className="rol-img" />
+                                    <p>Profesor</p>
+                                </div>
+                                <div className="rol-opcion" onClick={() => setRolDocente("Coordinador")}>
+                                    <img src={coor} alt="Coordinador" className="rol-img" />
+                                    <p>Coordinador</p>
+                                </div>
+                            </div>
                         </>
                     ) : (
                         <>
@@ -90,7 +92,7 @@ const Home = () => {
                                 </>
                             ) : (
                                 <>
-                                    <button className="volver-button" onClick={() => setCursoSeleccionado(null)}>
+                                    <button className="volver-cursos-button" onClick={() => setCursoSeleccionado(null)}>
                                         Volver a cursos
                                     </button>
                                     <PostulacionesCurso
@@ -104,7 +106,7 @@ const Home = () => {
                     )}
                 </>
             ) : (
-                <p>Inicia sesión para continuar</p>
+                <p className= "mensaje-principal">Inicia sesión para continuar</p>
             )}
         </div>
     );
