@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Detalle.css';
 
 const DetallePostulante = ({ postulante, detallesData, horarioData }) => {
 
@@ -109,8 +110,8 @@ const DetallePostulante = ({ postulante, detallesData, horarioData }) => {
 
   return (
     <button 
+      className="detalle-button"
       onClick={abrirVentanaDetalle}
-      className="ver-detalle-btn"
     >
       Ver detalle
     </button>

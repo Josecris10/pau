@@ -75,17 +75,6 @@
 }
 
 .volver-button {
-    margin: 10px 20px;
-    padding: 8px 14px;
-    background-color: #005B89;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.volver-cursos-button {
     position: fixed;
     bottom: 20px;
     padding: 10px 20px;
@@ -99,10 +88,7 @@
     font-weight: bold;
 }
 
-.volver-button:hover {
-    background-color: #014668;
-}
 
-.volver-cursos-button:hover {
+.volver-button:hover {
     background-color: #014668;
 }

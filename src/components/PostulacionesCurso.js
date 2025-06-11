@@ -10,9 +10,6 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
   const [detalles, setDetalles] = useState([]);
   const [horario, setHorario] = useState([]);
 
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   const [orden, setOrden] = useState({
     campo: null,
     direccion: 'asc'
@@ -140,7 +137,7 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
     if (!curso) return;
     
     const fetchAllData = async () => {
-      try {
+    try {
         const postRes = await fetch("http://localhost:3001/postulaciones");
 	      if (!postRes.ok) throw new Error(`Error postulaciones: ${postRes.status}`);
 	      const post = await postRes.json();
@@ -153,28 +150,26 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
 	      if (!horarioRes.ok) throw new Error(`Error horario: ${horarioRes.status}`);
 	      const horario = await horarioRes.json();
 
-let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
-    if (!esCoordinador && sedeUsuario) {
-      postulacionesFiltradas = postulacionesFiltradas.filter(p => p.sede === sedeUsuario);
-    }
+		let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
+		    if (!esCoordinador && sedeUsuario) {
+		      postulacionesFiltradas = postulacionesFiltradas.filter(p => p.sede === sedeUsuario);
+		    }
 
-    console.log('Postulaciones filtradas:', postulacionesFiltradas);
-    
-    // Establecer estados
-    setPostulaciones(postulacionesFiltradas);
-    setDetalles(detalles);
-    setHorario(horario);
+		    console.log('Postulaciones filtradas:', postulacionesFiltradas);
+		    
+		    // Establecer estados
+		    setPostulaciones(postulacionesFiltradas);
+		    setDetalles(detalles);
+		    setHorario(horario);
 
-  } catch (err) {
-    console.error("Error al cargar datos:", err);
-    setError("Error al cargar los datos. Por favor intente nuevamente.");
-  } finally {
-    setLoading(false);
-  }
-};
+		} 
+		catch (err) {
+			console.error("Error al cargar datos:", err);
+		}
+	};
 
     fetchAllData();
-  }, [curso, esCoordinador, sedeUsuario]);
+  	}, [curso, esCoordinador, sedeUsuario]);
 
   // Inicializar selecciones basadas en el estado actual
   useEffect(() => {
@@ -196,7 +191,7 @@ let postulacionesFiltradas = post.filter(p => p.curso === curso.codigo);
 
   return (
     <div className="postulaciones-container">
-      <h3>Postulaciones para {curso.nombre} ({curso.codigo}) - Paralelo {curso.paralelo}</h3>
+      <h3>Postulaciones para {curso.nombre} {curso.codigo} - Paralelo {curso.paralelo}</h3>
       {postulaciones.length === 0 ? (
         <p>No hay postulaciones para este curso.</p>
       ) : (

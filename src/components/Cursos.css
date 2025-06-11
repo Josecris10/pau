@@ -1,16 +1,48 @@
 .cursos-container {
-  margin-top: 20px;
+  position: relative;
+  padding-bottom: 60px;
+  justify-content: center;
+  width: 100%;
 }
 
-.cursos-lista {
-  list-style: none;
-  padding: 0;
+.cursos-tabla {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(2, 0, 0, 0.199);
+  table-layout: fixed;
+}
+
+.cursos-tabla th {
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  background-color: #005B89;
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.cursos-tabla th:hover {
+  background-color: #004a70;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cursos-tabla td{
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd9c;
+}
+
+.cursos-tabla tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .curso-button {
-  padding: 10px 0;          /* poco padding horizontal porque el ancho será grande */
-  margin: 10px 20px;        /* margen lateral para separación del borde */
-  width: calc(100% - 40px); /* ancho total menos margen horizontal (20 + 20) */
+  padding: 10px 0;
+  margin: 10px 20px;
+  width: calc(100% - 40px);
   background-color: #1e90ff;
   color: white;
   border: none;
@@ -19,8 +51,8 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
   text-align: center;
-  display: block;           /* para que tome todo el ancho definido */
-  white-space: nowrap;      /* que el texto no salte de línea */
+  display: block;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -33,6 +65,7 @@
   border: 2px solid #1e90ff;
   border-radius: 6px;
   padding: 6px 12px;
+  margin: 0 5px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;

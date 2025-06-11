@@ -71,11 +71,11 @@ const Home = () => {
                         <>
                             <h2 className="titulo-principal"> ¡Bienvenido! Elige tu perfil. </h2>
                             <div className="menu-buttons">
-                                <div className="rol-opcion" onClick={() => setRolDocente("Profesor")}>
+                                <div className="rol-opcion" onClick={() => setRolDocente("profesor")}>
                                     <img src={prof} alt="Profesor" className="rol-img" />
                                     <p>Profesor</p>
                                 </div>
-                                <div className="rol-opcion" onClick={() => setRolDocente("Coordinador")}>
+                                <div className="rol-opcion" onClick={() => setRolDocente("coordinador")}>
                                     <img src={coor} alt="Coordinador" className="rol-img" />
                                     <p>Coordinador</p>
                                 </div>
@@ -85,14 +85,14 @@ const Home = () => {
                         <>
                             {!cursoSeleccionado ? (
                                 <>
-                                    <Cursos usuario={user} onSeleccionarCurso={setCursoSeleccionado} />
+                                    <Cursos usuario={user} onSeleccionarCurso={setCursoSeleccionado} rolDocente={rolDocente} />
                                     <button className="volver-button" onClick={() => setRolDocente(null)}>
                                         Volver
                                     </button>
                                 </>
                             ) : (
                                 <>
-                                    <button className="volver-cursos-button" onClick={() => setCursoSeleccionado(null)}>
+                                    <button className="volver-button" onClick={() => setCursoSeleccionado(null)}>
                                         Volver a cursos
                                     </button>
                                     <PostulacionesCurso
