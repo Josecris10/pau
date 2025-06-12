@@ -199,13 +199,13 @@ const PostulacionesCurso = ({ curso, usuario, cursoUsuarios }) => {
           <table className="postulaciones-table">
             <thead>
               <tr>
-                <th onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
-                <th onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
-                <th onClick={() => handleSort('nota')}>Nota {obtenerIconoOrden('nota')}</th>
-                <th>Estado</th>
-                <th>Mas Información</th>
-                <th>Aceptar</th>
-                <th>Rechazar</th>
+                <th className="clickeable" onClick={() => handleSort('nombre')}>Nombre {obtenerIconoOrden('nombre')}</th>
+                <th className="clickeable" onClick={() => handleSort('preferencia')}>Pref. {obtenerIconoOrden('preferencia')}</th>
+                <th className="clickeable" onClick={() => handleSort('nota')}>Nota {obtenerIconoOrden('nota')}</th>
+                <th className="no-clickeable">Estado</th>
+                <th className="no-clickeable">Mas Información</th>
+                <th className="no-clickeable">Aceptar</th>
+                <th className="noclickeable">Rechazar</th>
               </tr>
             </thead>
             <tbody>

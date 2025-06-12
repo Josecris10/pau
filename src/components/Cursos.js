@@ -88,30 +88,25 @@ const Cursos = ({ usuario, onSeleccionarCurso, rolDocente }) => {
               <th onClick={() => handleOrdenar('coordinador')}>
                 Coordinador {renderIconoOrden('coordinador')}
               </th>
-              <th>Acceso</th>
             </tr>
           </thead>
           <tbody>
             {cursosOrdenados.map(curso => (
-              <tr key={`${curso.codigo}-${curso.paralelo}`}>
-                <td>{curso.codigo}</td>
-                <td>{curso.nombre}</td>
-                <td>{curso.paralelo}</td>
-                <td>{curso.sede || 'No especificada'}</td>
-                <td>{curso.coordinador}</td>
-                <td>
-                  <button
-                    className="acceso-rol-button"
-                    onClick={() => onSeleccionarCurso({
+              <tr 
+              key={`${curso.codigo}-${curso.paralelo}`}
+              className="curso-fila"
+              onClick={() => onSeleccionarCurso({
                       cursoId: curso.id,
                       codigo: curso.codigo,
                       paralelo: curso.paralelo,
                       perfil: rolDocente === 'coordinador' ? 'coordinador' : 'profesor'
                     })}
-                  >
-                    Acceder
-                  </button>
-                </td>
+              >
+                <td>{curso.codigo}</td>
+                <td>{curso.nombre}</td>
+                <td>{curso.paralelo}</td>
+                <td>{curso.sede || 'No especificada'}</td>
+                <td>{curso.coordinador}</td>
               </tr>
             ))}
           </tbody>

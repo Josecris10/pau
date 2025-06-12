@@ -15,14 +15,21 @@
 }
 
 .postulaciones-table th {
-  cursor: pointer;
   padding: 10px;
   background-color: #005B89;
   color: rgb(255, 255, 255);
   position: relative;
 }
 
-.postulaciones-table th:hover {
+.no-clickeable {
+  cursor:default;
+}
+
+.clickeable {
+  cursor: pointer;
+}
+
+.clickeable:hover {
   background-color: #004a70;
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
