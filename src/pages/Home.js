@@ -93,7 +93,7 @@ const Home = () => {
                             ) : (
                                 <>
                                     <button className="volver-button" onClick={() => setCursoSeleccionado(null)}>
-                                        Volver a cursos
+                                        Volver
                                     </button>
                                     <PostulacionesCurso
                                         curso={cursoSeleccionado}
