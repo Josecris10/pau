@@ -73,11 +73,11 @@ const Home = () => {
                             <div className="menu-buttons">
                                 <div className="rol-opcion" onClick={() => setRolDocente("profesor")}>
                                     <img src={prof} alt="Profesor" className="rol-img" />
-                                    <p>Profesor</p>
+                                    <h2>Profesor</h2>
                                 </div>
                                 <div className="rol-opcion" onClick={() => setRolDocente("coordinador")}>
                                     <img src={coor} alt="Coordinador" className="rol-img" />
-                                    <p>Coordinador</p>
+                                    <h2>Coordinador</h2>
                                 </div>
                             </div>
                         </>
